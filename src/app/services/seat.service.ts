@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class SeatService {
-  private apiUrl = 'http://localhost:3000';
+  private apiUrl = 'https://trainbooking-ws17vgri.b4a.run';
 
   constructor(private http: HttpClient) {}
 
