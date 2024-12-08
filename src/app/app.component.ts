@@ -44,14 +44,27 @@ export class AppComponent {
           this.bookingResult = error.error.error;
           this.toastr.error(error.error.error);
           this.isBookingLoading = false;
+          this.seatsInput.nativeElement.value = '';
         }
       )
     } else {
       this.toastr.error("Please enter valid input");
       this.isBookingLoading = false;
+      this.seatsInput.nativeElement.value = '';
     }
-
   }
+
+  getRows(): number[] {
+    return Array.from({ length: 12 }, (_, i) => i + 1);
+  }
+
+  getSeatsByRow(rowNumber: number): any[] {
+    if (rowNumber === 12) {
+      return this.seats.filter(seat => seat.row_number === rowNumber);
+    }
+    return this.seats.filter(seat => seat.row_number === rowNumber);
+  }
+
   resetSeats(): void {
     this.isResettingLoading = true;
     this.seatService.resetSeats().subscribe(

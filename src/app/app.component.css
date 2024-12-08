@@ -95,11 +95,25 @@
   /* Seats container */
   .seats-container {
     margin-top: 2rem;
-    padding: 1rem;
     border-radius: 10px;
     background-color: #f9fafb;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
+  @media (max-width: 768px) {
+  .seat {
+    font-size: 0.75rem;
+    padding: 0.5rem 0.25rem;
+  }
+  
+  .seat-row {
+    gap: 0.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .seat {
+    font-size: 0.675rem;
+  }
+}
   
   @media (min-width: 640px) {
     .seats-container {
@@ -118,6 +132,26 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 0.5rem;
+  }
+  
+  .coach-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+    background: #f9fafb;
+    border-radius: 0.5rem;
+  }
+  
+  .seat-row {
+    display: flex;
+    justify-content: center;
+    gap: 0.2rem;
+  }
+  
+  /* Last row with only 3 seats */
+  .seat-row:last-child {
+    justify-content: center;
   }
   
   /* Individual seats */

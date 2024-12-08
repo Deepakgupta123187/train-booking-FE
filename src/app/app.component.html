@@ -38,19 +38,61 @@
       </div>
     </div>
     
+    <!-- <div class="seats-container">
+      <h2 class="seats-title">Seat Availability</h2>
+      <div class="coach-layout">
+        @for (row of getRows(); track row) {
+          <div class="seat-row">
+            @for (seat of getSeatsByRow(row); track seat.id) {
+              <div 
+                [class.booked]="seat.is_booked"
+                class="seat"
+                [class.last-row]="row === 11"
+              >
+                Row {{ seat.row_number }} Seat {{ seat.seat_number }}
+              </div>
+            }
+          </div>
+        }
+      </div>
+    </div> -->
+  
     <div class="seats-container">
       <h2 class="seats-title">Seat Availability</h2>
-      <div class="seats-grid">
-        @for (seat of seats; track seat.id) {
-          <span 
-            [class.booked]="seat.is_booked"
-            class="seat"
-          >
-            Row {{ seat.row_number }} Seat {{ seat.seat_number }}
-          </span>
+      <div class="coach-layout">
+        @for (row of getRows(); track row) {
+          <div class="seat-row">
+            @for (seat of getSeatsByRow(row); track seat.id) {
+              <div 
+                [class.booked]="seat.is_booked"
+                class="seat"
+                [class.last-row]="row === 11"
+              >
+                <svg 
+                  viewBox="0 0 100 100" 
+                  class="seat-icon"
+                  [class.booked]="seat.is_booked"
+                >
+                  <!-- Seat base -->
+                  <rect x="20" y="50" width="60" height="40" rx="5" />
+                  <!-- Seat back -->
+                  <rect x="25" y="20" width="50" height="35" rx="5" />
+                  <!-- Seat number -->
+                  <text 
+                    x="50" 
+                    y="70" 
+                    text-anchor="middle" 
+                    class="seat-text"
+                  >{{ seat.seat_number }}</text>
+                </svg>
+                <span class="seat-info">R{{ seat.row_number }}S{{ seat.seat_number }}</span>
+              </div>
+            }
+          </div>
         }
       </div>
     </div>
+  
   </div>
 </div>
 <router-outlet />
