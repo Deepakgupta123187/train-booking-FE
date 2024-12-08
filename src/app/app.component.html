@@ -12,18 +12,28 @@
           class="seats-input"
         />
         <button 
-          (click)="bookSeats(seatsInput.value)" 
-          class="book-button"
-        >
-          Book
-        </button>
+        (click)="bookSeats(seatsInput.value)" 
+        class="book-button" 
+        [disabled]="isBookingLoading" 
+      >
+      @if (isBookingLoading) {
+        <span class="loader"></span>
+      } @else {
+        <span>Book</span>
+      }
+      </button>
+      
         <button 
           (click)="resetSeats()" 
           [disabled]="totalSeatRemaining == 80"
           [class.disabled]="totalSeatRemaining === 80"
           class="reset-button"
         >
-          Reset Seats
+          @if (isResettingLoading) {
+            <span class="loader"></span>
+          } @else {
+            <span> Reset Seats</span>
+          }
         </button>
       </div>
     </div>
