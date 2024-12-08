@@ -23,7 +23,7 @@ export class AppComponent {
   loadSeats() {
     this.seatService.getSeats().subscribe(data => {
       this.seats = data;
-      this.totalSeatRemaining=data.filter((x:any)=>x.is_booked==false).length
+      this.totalSeatRemaining=data.filter((x:any)=>x.is_booked == false).length;
     });
   }
 
@@ -32,10 +32,9 @@ export class AppComponent {
       this.seatService.bookSeats(numSeats).subscribe(
         result => {
           this.bookingResult = result.message;
-          this.loadSeats();
           this.toastr.success(this.bookingResult);
-          console.log("toaste")
           this.seatsInput.nativeElement.value = '';
+          this.loadSeats();
         },
         error => {
           this.bookingResult = error.error.error;
@@ -44,7 +43,6 @@ export class AppComponent {
       )
     }else{
       this.toastr.error("Please enter valid input");
-
     }
    
   }
